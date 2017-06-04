@@ -2,7 +2,7 @@
 
 ![example1](https://render.bitstrips.com/v2/cpanel/9188364-121464857_22-s1-v1.png?transparent=1&palette=1&width=200)
 ![example2](https://render.bitstrips.com/v2/cpanel/10200827-280531978_5-s1-121464857_22-s1-v1.png?transparent=1&palette=1&width=200)
-![example3](https://render.bitstrips.com/render/10220563/280531978_2-s1-v1.png?outfit=971785&head_rotation=1&body_rotation=7&cropped=%22body%22&width=200)
+![example3](https://render.bitstrips.com/render/10220563/280531978_4-s1-v1.png?outfit=971785&head_rotation=1&body_rotation=7&cropped=%22body%22&width=200)
 
 * [friends](https://joshcheek.github.io/bitmoji/friends.html)
 * [individual](https://joshcheek.github.io/bitmoji/imoji.html)
@@ -18,10 +18,10 @@
 
 ## Avatars:
 
-* Me:    `280531978_2-s1`
+* Me:    `280531978_4-s1`
 * Yumin: `121464857_22-s1`
 * Gomez: `270452369_2-s1`
-* Others I've found `280231973_2`, `280531978_2-s1`, `121464857_22-s1`, `270452369_2-s1`, `128256895_1-s1`, `128257004_1_s1`,
+* Others I've found `280231973_2`, `280531978_4-s1`, `121464857_22-s1`, `270452369_2-s1`, `128256895_1-s1`, `128257004_1_s1`,
   `280231973_2-s1`, `270452367_2-s1`, `270452366_2-s1`, `270452365_2-s1`, `270452364_2-s1`, `270452363_2-s1`, `270452362_2-s1`,
   `270452361_2-s1`, `270452360_2-s1`
 
@@ -51,25 +51,25 @@ I've seen as high as `v3`, but it doesn't seem to change anything when I edit th
 Friends, generated with:
 
 ```
-cat bitmoji.json | jq '.friends|map([.src]+.tags)[]' -c | ruby -ne 'puts $_ % [%w[280531978_2-s1 270452369_2-s1 121464857_22-s1]].*(2).map(&:sample)' | ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > friends.html
+cat bitmoji.json | jq '.friends|map([.src]+.tags)[]' -c | ruby -ne 'puts $_ % [%w[280531978_4-s1 270452369_2-s1 121464857_22-s1]].*(2).map(&:sample)' | ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > friends.html
 ```
 
 Individual, generated with:
 
 ```
-cat bitmoji.json | jq '.imoji|map([.src]+.tags)[]' -c | ruby -ne 'puts $_.sub "%s", %w[280531978_2-s1 270452369_2-s1 121464857_22-s1].sample'  | ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > imoji.html
+cat bitmoji.json | jq '.imoji|map([.src]+.tags)[]' -c | ruby -ne 'puts $_.sub "%s", %w[280531978_4-s1 270452369_2-s1 121464857_22-s1].sample'  | ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > imoji.html
 ```
 
 Packs (also individual), generated with:
 
 ```
-cat bitmoji.json | jq '.packs[]|.templates[]|[.src]+.tags' -c | ruby -ne 'puts $_.sub "%s", %w[280531978_2-s1 270452369_2-s1 121464857_22-s1].sample'  | ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > packs.html
+cat bitmoji.json | jq '.packs[]|.templates[]|[.src]+.tags' -c | ruby -ne 'puts $_.sub "%s", %w[280531978_4-s1 270452369_2-s1 121464857_22-s1].sample'  | ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > packs.html
 ```
 
 Male outfits:
 
 ```sh
-cat bitmoji.json | jq '.outfits|[.male][]|.brands[]|.outfits[]|[.image, .description]' -c | ruby -ne 'puts $_.sub /(?<=\/)\d+_\d+-s\d(?=-v)/, %w[280531978_2-s1 270452369_2-s1 128256895_1-s1].sample' |ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > male_outfits.html
+cat bitmoji.json | jq '.outfits|[.male][]|.brands[]|.outfits[]|[.image, .description]' -c | ruby -ne 'puts $_.sub /(?<=\/)\d+_\d+-s\d(?=-v)/, %w[280531978_4-s1 270452369_2-s1 128256895_1-s1].sample' |ruby -rjson -ne 'url, *tags = JSON.parse($_); puts "<div class=\"friends\"><img src=\"#{url}&width=300\" /><ul>#{tags.map {|t| "<li>#{t}</li>"}.join}</ul></div>"; BEGIN { puts "<style> body * { margin: 0; padding: 0; display: inline-block; } li { display: block; } .friends { width: 300px; } </style>" }'  > male_outfits.html
 ```
 
 Female outfits:
