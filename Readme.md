@@ -15,6 +15,10 @@
 
 * [here](https://api.bitmoji.com/content/templates?app_name=bitmoji&platform=ios)
 
+I've discovered that there are additional comics, which aren't listed in the API output, eg: `10211795`
+
+![unicorn vs dragon](https://render.bitstrips.com/v2/cpanel/10211795-280531978_4-s1-280531978_4-s1-v1.png?transparent=1&palette=1&width=400)
+
 
 ## Avatars:
 
